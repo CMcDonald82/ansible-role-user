@@ -1,0 +1,33 @@
+---
+
+- name: Ensure sudo group is present
+  group:
+    name: sudo
+    state: present
+
+# We need to enable passwordless sudo here otherwise the playbook will fail when trying to use the 
+# 'synchronize' module (rsync) when remote_user is set to 'deploy' user. 
+# See https://github.com/ansible/ansible/issues/15297
+- name: Ensure sudo group has sudo privileges
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    regexp: "^%sudo"
+    line: "%sudo ALL=(ALL) NOPASSWD:ALL" 
+    validate: "visudo -cf %s" 
+
+- name: Create deploy user
+  user:
+    name: "{{ deploy_username }}"
+    password: "{{ deploy_password }}"
+    groups: 
+      - sudo
+    append: yes
+    shell: /bin/bash
+    update_password: always
+    state: present
+
+- name: Add authorized ssh key (public key) for deploy user
+  authorized_key:
+    user: "{{ deploy_username }}"
+    key: "{{ lookup('file', public_key) }}"
