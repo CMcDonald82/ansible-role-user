@@ -27,4 +27,4 @@
 - name: Add authorized ssh key (public key) for deploy user
   authorized_key:
     user: "{{ deploy_username }}"
-    key: "{{ lookup('file', public_key) }}"
+    key: "{{ lookup('file', {{ public_key }}) }}"
