@@ -3,3 +3,4 @@
 deploy_username: deploy
 deploy_password: "{{ vault_deploy_password }}"
 public_key: ~/.ssh/id_rsa.pub
+enable_passwordless_sudo: true

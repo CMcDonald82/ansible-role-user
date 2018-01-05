@@ -45,7 +45,6 @@ NOTE: This assumes the required vault_deploy_password variable has been set in a
   roles:
     - user_role
 
-
 ## Dependencies
 
 None

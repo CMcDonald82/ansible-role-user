@@ -1,3 +1,7 @@
 ---
 
 - include_tasks: create.yml
+
+- name: Test galaxy update
+  debug:
+    msg: "This should show up if galaxy is updated, otherwise will probably have to install again with --force flag"
