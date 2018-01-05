@@ -5,9 +5,6 @@
     name: sudo
     state: present
 
-# We need to enable passwordless sudo here otherwise the playbook will fail when trying to use the 
-# 'synchronize' module (rsync) when remote_user is set to 'deploy' user. 
-# See https://github.com/ansible/ansible/issues/15297
 - name: Ensure sudo group has sudo privileges
   lineinfile:
     dest: /etc/sudoers

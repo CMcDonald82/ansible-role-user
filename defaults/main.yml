@@ -3,4 +3,10 @@
 deploy_username: deploy
 deploy_password: "{{ vault_deploy_password }}"
 public_key: ~/.ssh/id_rsa.pub
+
+# Enable passwordless sudo here if you're planning to use Ansible's 'synchronize' module in a playbook 
+# run on the server that this user will be created on.
+# Otherwise the playbook will fail when trying to use the 
+# 'synchronize' module (rsync) when remote_user is set to '{{ deploy_username }}'. 
+# See https://github.com/ansible/ansible/issues/15297
 enable_passwordless_sudo: true
