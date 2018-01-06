@@ -30,9 +30,9 @@
 - name: SSH Keys | Add authorized ssh key (public key) for deploy user
   authorized_key:
     user: "{{ item.0.username }}"
-    key: "{{ item.1 }}" # "{{ lookup('file', '{{ public_key }}') }}"
+    key: "{{ lookup('file', '{{ item.1 }}') }}"
     path: "{{ item.0.home | d('/home/' + item.0.username) }}/.ssh/authorized_keys"
   with_subelements:
-    - "{{ system_users }}"
+    - system_users # "{{system_users }}"
     - ssh_keys
     - skip_missing: yes
