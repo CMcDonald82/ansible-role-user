@@ -19,7 +19,7 @@
     password: "{{ item.password }}"
     groups: "{{ item.groups | d(omit) }}" # - sudo
     append: "{{ item.append | d(omit) }}" # yes
-    shell: "{{ item.shell | d({{ users_default_shell }}) }}" # /bin/bash
+    shell: "{{ item.shell | d(users_default_shell) }}" # /bin/bash
     update_password: "{{ item.update_password | d(omit) }}" # always
     createhome: "{{ item.create_home_dir | d(omit) }}" # yes
     home: "{{ item.home | d('/home/' + item.username) }}"

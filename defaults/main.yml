@@ -27,10 +27,9 @@ users_default_shell: /bin/bash
 # public_key: ~/.ssh/id_rsa.pub
 
 # This will enable passwordless sudo for the 'sudo' group.
-# Enable passwordless sudo here if you're planning to use Ansible's 'synchronize' module in a playbook 
-# run on the server that this user will be created on.
+# For example, enable passwordless sudo here if you're planning to use Ansible's 'synchronize' module in a playbook 
 # Otherwise the playbook will fail when trying to use the 
-# 'synchronize' module (rsync) when remote_user is set to '{{ deploy_username }}'. 
+# 'synchronize' module (rsync) when remote_user is not set to root. 
 # See https://github.com/ansible/ansible/issues/15297
 
 enable_passwordless_sudo: true
