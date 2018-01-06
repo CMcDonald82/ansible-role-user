@@ -22,19 +22,19 @@
     shell: "{{ item.shell | d(users_default_shell) }}" # /bin/bash
     update_password: "{{ item.update_password | d(omit) }}" # always
     createhome: "{{ item.create_home_dir | d(omit) }}" # yes
-    home: "{{ item.home | d('/home/' + item.username) }}"
+    home: "{{ item.home | d(omit) }}" #"{{ item.home | d('/home/' + item.username) }}"
     generate_ssh_key: "{{ item.generate_ssh_key | d(omit) }}"
     state: present
   with_items: "{{ system_users }}"
-  no_log: true
+  # no_log: true
 
 - name: SSH Keys | Add authorized ssh key (public key) for deploy user
   authorized_key:
     user: "{{ item.0.username }}"
     key: "{{ lookup('file', '{{ item.1 }}') }}"
-    path: "{{ item.0.home | d('/home/' + item.0.username) }}/.ssh/authorized_keys"
+    # path: "{{ item.0.home | d('/home/' + item.0.username) }}/.ssh/authorized_keys" # Shouldn't need this - should just use the default path (~/.ssh/authorized_keys)
   with_subelements:
-    - "{{system_users }}"
+    - "{{ system_users }}"
     - ssh_keys
     - skip_missing: yes
   no_log: true
