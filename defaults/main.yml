@@ -3,13 +3,34 @@
 # deploy_username: deploy
 # deploy_password: "{{ vault_deploy_password }}"
 
-users: []
 
-public_key: ~/.ssh/id_rsa.pub
+# ex.)
+# system_users:
+#   - username: deploy
+#     password: password
+#     groups:
+#       - sudo
+#     append: yes
+#     ssh_keys:
+#       - key1
+#     generate_ssh_key: false 
+#     update_password: always
+#     shell: /bin/bash
+#     create_home: true
+#     home: /home/deploy 
+#     public_key: ~/.ssh/id_rsa.pub # Note - probably don't need this anymore if we're now using ssh_key and path
 
+system_users: []
+
+users_default_shell: /bin/bash
+
+# public_key: ~/.ssh/id_rsa.pub
+
+# This will enable passwordless sudo for the 'sudo' group.
 # Enable passwordless sudo here if you're planning to use Ansible's 'synchronize' module in a playbook 
 # run on the server that this user will be created on.
 # Otherwise the playbook will fail when trying to use the 
 # 'synchronize' module (rsync) when remote_user is set to '{{ deploy_username }}'. 
 # See https://github.com/ansible/ansible/issues/15297
+
 enable_passwordless_sudo: true

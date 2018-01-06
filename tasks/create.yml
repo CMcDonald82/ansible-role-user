@@ -1,11 +1,11 @@
 ---
 
-- name: Ensure sudo group is present
+- name: Sudo Group | Ensure sudo group is present
   group:
     name: sudo
     state: present
 
-- name: Ensure sudo group has sudo privileges
+- name: Sudo Group | Ensure sudo group has sudo privileges
   lineinfile:
     dest: /etc/sudoers
     state: present
@@ -13,18 +13,26 @@
     line: "{{ (enable_passwordless_sudo) | ternary('%sudo ALL=(ALL) NOPASSWD:ALL', '%sudo ALL=(ALL:ALL) ALL') }}" #"%sudo ALL=(ALL) NOPASSWD:ALL" 
     validate: "visudo -cf %s" 
 
-- name: Create deploy user
+- name: Users | Create deploy users
   user:
-    name: "{{ deploy_username }}"
-    password: "{{ deploy_password }}"
-    groups: 
-      - sudo
-    append: yes
-    shell: /bin/bash
-    update_password: always
+    name: "{{ item.username }}"
+    password: "{{ item.password }}"
+    groups: "{{ item.groups | d(omit) }}" # - sudo
+    append: "{{ item.append | d(omit) }}" # yes
+    shell: "{{ item.shell | d({{ users_default_shell }}) }}" # /bin/bash
+    update_password: "{{ item.update_password | d(omit) }}" # always
+    createhome: "{{ item.create_home_dir | d(omit) }}" # yes
+    home: "{{ item.home | d('/home/' + item.username) }}"
+    generate_ssh_key: "{{ item.generate_ssh_key | d(omit) }}"
     state: present
+  with_items: "{{ system_users }}"
 
-- name: Add authorized ssh key (public key) for deploy user
+- name: SSH Keys | Add authorized ssh key (public key) for deploy user
   authorized_key:
-    user: "{{ deploy_username }}"
-    key: "{{ lookup('file', '{{ public_key }}') }}"
+    user: "{{ item.0.username }}"
+    key: "{{ item.1 }}" # "{{ lookup('file', '{{ public_key }}') }}"
+    path: "{{ item.0.home | d('/home/' + item.0.username) }}/.ssh/authorized_keys"
+  with_subelements:
+    - "{{ system_users }}"
+    - ssh_keys
+    - skip_missing: yes
