@@ -33,6 +33,6 @@
     key: "{{ lookup('file', '{{ item.1 }}') }}"
     path: "{{ item.0.home | d('/home/' + item.0.username) }}/.ssh/authorized_keys"
   with_subelements:
-    - system_users # "{{system_users }}"
+    - "{{system_users }}"
     - ssh_keys
     - skip_missing: yes
