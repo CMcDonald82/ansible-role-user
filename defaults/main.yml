@@ -1,7 +1,10 @@
 ---
 
-deploy_username: deploy
-deploy_password: "{{ vault_deploy_password }}"
+# deploy_username: deploy
+# deploy_password: "{{ vault_deploy_password }}"
+
+users: []
+
 public_key: ~/.ssh/id_rsa.pub
 
 # Enable passwordless sudo here if you're planning to use Ansible's 'synchronize' module in a playbook 
