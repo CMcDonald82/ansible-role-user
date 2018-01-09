@@ -18,7 +18,6 @@
 #     shell: /bin/bash
 #     create_home: true
 #     home: /home/deploy 
-#     public_key: ~/.ssh/id_rsa.pub # Note - probably don't need this anymore if we're now using ssh_key and path
 
 system_users: []
 
