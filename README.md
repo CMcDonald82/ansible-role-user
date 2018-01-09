@@ -33,9 +33,9 @@ The following variables with their default values are listed below.
   ```
 
   These are the available parameters for each user:
-    ..* username (required): Name of the user to create, remove or modify.
-    ..* password: Always generate a crypted password for this value. It is a good idea to store this password in an encrypted file. See [this playbook](https://github.com/CMcDonald82/ansible-playbook-ubuntu-phoenix) for an example of how to do this.
-    * groups: Any groups you want the user to be added to. For example, you can add the user to the sudo group to give them sudo privileges.
+  * username (required): Name of the user to create, remove or modify.
+  * password: Always generate a crypted password for this value. It is a good idea to store this password in an encrypted file. See [this playbook](https://github.com/CMcDonald82/ansible-playbook-ubuntu-phoenix) for an example of how to do this.
+  * groups: Any groups you want the user to be added to. For example, you can add the user to the sudo group to give them sudo privileges.
     * append (default = no): yes will only add groups, not set them to just the list in groups. 
     * ssh_keys: The list of ssh public keys to add for the user. Each public key should be specified here by the path to that key on the local machine (ex. ~/.ssh/id_rsa.pub)
     * generate_ssh_key: Whether to generate a SSH key for the user in question. This will not overwrite an existing SSH key.
