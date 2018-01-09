@@ -32,7 +32,6 @@
   authorized_key:
     user: "{{ item.0.username }}"
     key: "{{ lookup('file', '{{ item.1 }}') }}"
-    # path: "{{ item.0.home | d('/home/' + item.0.username) }}/.ssh/authorized_keys" # Shouldn't need this - should just use the default path (~/.ssh/authorized_keys)
   with_subelements:
     - "{{ system_users }}"
     - ssh_keys
