@@ -36,12 +36,12 @@ The following variables with their default values are listed below.
   * username (required): Name of the user to create, remove or modify.
   * password: Always generate a crypted password for this value. It is a good idea to store this password in an encrypted file. See [this playbook](https://github.com/CMcDonald82/ansible-playbook-ubuntu-phoenix) for an example of how to do this.
   * groups: Any groups you want the user to be added to. For example, you can add the user to the sudo group to give them sudo privileges.
-    * append (default = no): yes will only add groups, not set them to just the list in groups. 
-    * ssh_keys: The list of ssh public keys to add for the user. Each public key should be specified here by the path to that key on the local machine (ex. ~/.ssh/id_rsa.pub)
-    * generate_ssh_key: Whether to generate a SSH key for the user in question. This will not overwrite an existing SSH key.
-    * update_password (can either be 'always' or 'on_create'): always will update passwords if they differ. on_create will only set the password for newly created users.
-    * shell (default is /bin/bash): Optionally set the user's shell.
-    * create_home (default = yes): Unless set to no, a home directory will be made for the user when the account is created or if the home directory does not exist.
+  * append (default = no): yes will only add groups, not set them to just the list in groups. 
+  * ssh_keys: The list of ssh public keys to add for the user. Each public key should be specified here by the path to that key on the local machine (ex. ~/.ssh/id_rsa.pub)
+  * generate_ssh_key: Whether to generate a SSH key for the user in question. This will not overwrite an existing SSH key.
+  * update_password (can either be 'always' or 'on_create'): always will update passwords if they differ. on_create will only set the password for newly created users.
+  * shell (default is /bin/bash): Optionally set the user's shell.
+  * create_home (default = yes): Unless set to no, a home directory will be made for the user when the account is created or if the home directory does not exist.
 
 
   ```
