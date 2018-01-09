@@ -63,6 +63,7 @@ The following variables with their default values are listed below.
 ## Example Playbook
 NOTE: This assumes the required vault_deploy_password variable has been set in a file within group_vars/all wherever this playbook is being run
 
+```
 - name: Setup Ubuntu server with PostgreSQL, Nginx, SSL, UFW for use with Phoenix app
   hosts: all
   remote_user: "{{ remote_username }}"
@@ -73,6 +74,7 @@ NOTE: This assumes the required vault_deploy_password variable has been set in a
       system_users:
         -
       enable_passwordless_sudo: true
+```
 
 ## Dependencies
 
