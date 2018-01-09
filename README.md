@@ -72,7 +72,18 @@ NOTE: This assumes the required vault_deploy_password variable has been set in a
   roles:
     - role: user_role
       system_users:
-        -
+        - username: deploy
+          password: password
+          groups:
+            - sudo
+          append: yes
+          ssh_keys:
+            - /path/to/key1
+          generate_ssh_key: false 
+          update_password: always
+          shell: /bin/bash
+          create_home: true
+          home: /home/deploy 
       enable_passwordless_sudo: true
 ```
 
