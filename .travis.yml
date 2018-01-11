@@ -1,5 +1,11 @@
 ---
 
+# Whitelist for branches to build
+branches:
+  only:
+    - master
+    - multiple_users
+
 # We need sudo for some of the Docker commands.
 sudo: required
 
