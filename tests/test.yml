@@ -1,6 +1,6 @@
 ---
 
-- hosts: all
+- hosts: localhost #all
   vars:
     system_users:
       - username: deploy_test
