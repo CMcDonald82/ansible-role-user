@@ -1,6 +1,8 @@
 ---
 
 - hosts: localhost #all
+  remote_user: root
+  become: yes
   vars:
     system_users:
       - username: deploy_test
