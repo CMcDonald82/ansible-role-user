@@ -10,15 +10,15 @@
         groups:
           - sudo
         ssh_keys:
-          - ./tests/id_rsa_test.pub
+          - ./tests/files/id_rsa_test.pub
       
       - username: deploy_test_2
         password: admin
         groups:
           - sudo
-        generate_ssh_key: true
+        # generate_ssh_key: true
         ssh_keys:
-          - ./tests/id_rsa_test.pub
+          - ./tests/files/id_rsa_test.pub
 
   roles:
     - role_under_test
