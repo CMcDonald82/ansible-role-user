@@ -5,20 +5,20 @@
   become: yes
   vars:
     system_users:
-      - username: deploy_test_2
+      - username: deploy_test_1
         password: admin
         groups:
           - sudo
         ssh_keys:
           - ./tests/files/id_rsa_test.pub
       
-      - username: deploy_test_2
-        password: admin
-        groups:
-          - sudo
-        # generate_ssh_key: true
-        ssh_keys:
-          - ./tests/files/id_rsa_test.pub
+      # - username: deploy_test_2
+      #   password: admin
+      #   groups:
+      #     - sudo
+      #   # generate_ssh_key: true
+      #   ssh_keys:
+      #     - ./tests/files/id_rsa_test.pub
 
   roles:
     - role_under_test
