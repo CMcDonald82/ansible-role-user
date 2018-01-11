@@ -17,6 +17,8 @@
         groups:
           - sudo
         generate_ssh_key: true
-        
+        ssh_keys:
+          - ./tests/id_rsa_test.pub
+
   roles:
     - role_under_test
