@@ -11,6 +11,7 @@
           - sudo
         ssh_keys:
           - ./tests/files/id_rsa_test.pub
+          - ./tests/files/id_rsa_test_2.pub
 
   roles:
     - role_under_test

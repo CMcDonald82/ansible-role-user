@@ -33,11 +33,9 @@
 - debug: var=rootkeys
 
 - name: SSH Keys | Add authorized ssh key (public key) for deploy user
-  debug: 
-    msg: "{{ item.0.ssh_public_key }}"
   authorized_key:
     user: "{{ item.0.username }}"
-    key: "{{ lookup('file', item.1) }}" #"{{ item.1 }}" 
+    key: "{{ (item.1) | ternary(lookup('file', item.1), lookup('file', '~/.ssh/id_rsa.pub')) }}" #"{{ item.1 }}" 
   with_subelements:
     - "{{ system_users }}"
     - ssh_keys
