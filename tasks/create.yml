@@ -23,10 +23,15 @@
     update_password: "{{ item.update_password | d(omit) }}" # always
     createhome: "{{ item.create_home_dir | d(omit) }}" # yes
     home: "{{ item.home | d(omit) }}" #"{{ item.home | d('/home/' + item.username) }}"
-    generate_ssh_key: "{{ item.generate_ssh_key | d(omit) }}"
+    generate_ssh_key: "{{ (item.ssh_keys) | ternary(omit, item.generate_ssh_key) }}"
+    # maybe have default path to ssh_keys here
     state: present
   with_items: "{{ system_users }}"
-  no_log: true
+  register: rootkeys
+  # no_log: true
+
+- debug: 
+  var: rootkeys
 
 - name: SSH Keys | Add authorized ssh key (public key) for deploy user
   authorized_key:
@@ -36,4 +41,4 @@
     - "{{ system_users }}"
     - ssh_keys
     - skip_missing: yes
-  no_log: true
+  # no_log: true
