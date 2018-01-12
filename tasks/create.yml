@@ -23,7 +23,7 @@
     update_password: "{{ item.update_password | d(omit) }}" # always
     createhome: "{{ item.create_home_dir | d(omit) }}" # yes
     home: "{{ item.home | d(omit) }}" #"{{ item.home | d('/home/' + item.username) }}"
-    generate_ssh_key: "{{ (item.ssh_keys) | ternary(omit, 'true') }}"
+    generate_ssh_key: "{{ (item.ssh_keys) | ternary(omit, 'yes') }}"
     # maybe have default path to ssh_keys here
     state: present
   with_items: "{{ system_users }}"
@@ -35,7 +35,7 @@
 - name: SSH Keys | Add authorized ssh key (public key) for deploy user
   authorized_key:
     user: "{{ item.0.username }}"
-    key: "{{ (item.0.ssh_keys) | ternary(lookup('file', item.1), lookup('file', '~/.ssh/id_rsa.pub')) }}" #"{{ item.1 }}" 
+    key: "{{ (item.1) | ternary(lookup('file', item.1), 'yes') }}" #"{{ item.1 }}" 
   with_subelements:
     - "{{ system_users }}"
     - ssh_keys
