@@ -30,8 +30,7 @@
   register: rootkeys
   # no_log: true
 
-- debug: 
-  var: rootkeys
+- debug: var=rootkeys
 
 - name: SSH Keys | Add authorized ssh key (public key) for deploy user
   authorized_key:
