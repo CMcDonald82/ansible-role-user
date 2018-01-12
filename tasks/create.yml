@@ -28,7 +28,8 @@
     # maybe have default path to ssh_keys here
     state: present
   with_items: "{{ system_users }}"
-  register: rootkeys
+  when: item.ssh_keys is defined
+  # register: rootkeys
   # no_log: true
 
 # - debug: var=rootkeys
