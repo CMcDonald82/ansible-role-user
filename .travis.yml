@@ -23,7 +23,7 @@ script:
   - ${PWD}/tests/test.sh
 
   # Ensure users were created. 
-  - docker exec --tty ${container_id} env TERM=xterm ${PWD}/tests/user_exists.sh
+  - docker exec --tty ${container_id} env TERM=xterm /bin/bash ${PWD}/tests/user_exists.sh;
   # - ${PWD}/tests/user_exists.sh
   # - docker exec --tty ${container_id} env TERM=xterm user_exists=$(id -u deploy_test_1 > /dev/null 2>&1);
   # - echo $user_exists
