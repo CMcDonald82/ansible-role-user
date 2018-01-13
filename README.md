@@ -2,7 +2,6 @@
 
 [![Build Status](https://travis-ci.org/CMcDonald82/ansible-role-user.svg?branch=master)](https://travis-ci.org/CMcDonald82/ansible-role-user)
 
-TESTING
 Ansible role for creating a user on an Ubuntu server
 
 ## Requirements
