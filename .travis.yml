@@ -23,4 +23,4 @@ script:
   - ${PWD}/tests/test.sh
 
   # Ensure users were created. 
-  - docker exec --tty ${container_id} env TERM=xterm /bin/bash /etc/ansible/roles/role_under_test/tests/users_exist.sh;
+  - docker exec --tty ${container_id} env TERM=xterm /etc/ansible/roles/role_under_test/tests/users_exist.sh
