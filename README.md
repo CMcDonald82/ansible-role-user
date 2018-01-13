@@ -79,8 +79,7 @@ NOTE: This assumes the required vault_deploy_password variable has been set in a
             - sudo
           append: yes
           ssh_keys:
-            - /path/to/key1
-          generate_ssh_key: false 
+            - /path/to/key1 
           update_password: always
           shell: /bin/bash
           create_home: true
