@@ -4,7 +4,8 @@
 set -e 
 
 user_list='deploy_test_1 deploy_test_2'
-for usr in $user_list do
+for usr in $user_list 
+do
   # user_exists=$(id -u "${usr}" > /dev/null 2>&1; echo $?);
   echo "$usr"
   # if [ $user_exists -eq 0 ]; then 
