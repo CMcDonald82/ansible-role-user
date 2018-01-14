@@ -20,6 +20,11 @@
         groups:
           - sudo
 
+      - username: deploy_test_3
+        password: admin
+        ssh_keys:
+          - ./tests/files/id_rsa_test.pub
+
       # This user should be created but not have sudo privileges since it is not part of the sudo group
 
   roles:
