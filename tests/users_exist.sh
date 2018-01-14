@@ -8,11 +8,11 @@ for usr in ${user_list[*]}
 do
   user_exists=$(id -u "$usr" > /dev/null 2>&1; echo $?);
   echo "$user_exists"
-  # if [ $user_exists -eq 0 ]; then 
-  #   echo "User $usr exists"
-  # else
-  #   echo "User $usr does not exist"
-  # fi
+  if [ $user_exists -eq 0 ]; then 
+    echo "User $usr exists"
+  else
+    echo "User $usr does not exist"
+  fi
 done
 
 # deploy_test_1_user_exists=$(id -u deploy_test_1 > /dev/null 2>&1; echo $?);
