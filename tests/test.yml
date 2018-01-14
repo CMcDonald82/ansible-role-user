@@ -5,6 +5,7 @@
   become: yes
   vars:
     system_users:
+      # This user should be created and have sudo access
       - username: deploy_test_1
         password: admin
         groups:
@@ -13,10 +14,13 @@
           - ./tests/files/id_rsa_test.pub
           - ./tests/files/id_rsa_test_2.pub
 
+      # This user should not be created since it does not have 'ssh_keys' specified
       - username: deploy_test_2
         password: admin
         groups:
           - sudo
+
+      # This user should be created but not have sudo privileges since it is not part of the sudo group
 
   roles:
     - role_under_test
