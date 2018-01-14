@@ -5,12 +5,13 @@ set -e
 
 user_list='deploy_test_1 deploy_test_2'
 for usr in $user_list do
-  user_exists=$(id -u "${usr}" > /dev/null 2>&1; echo $?);
-  if [ $user_exists -eq 0 ]; then 
-    echo "User $usr exists"
-  else
-    echo "User $usr does not exist"
-  fi
+  # user_exists=$(id -u "${usr}" > /dev/null 2>&1; echo $?);
+  echo "$usr"
+  # if [ $user_exists -eq 0 ]; then 
+  #   echo "User $usr exists"
+  # else
+  #   echo "User $usr does not exist"
+  # fi
 done
 
 # deploy_test_1_user_exists=$(id -u deploy_test_1 > /dev/null 2>&1; echo $?);
