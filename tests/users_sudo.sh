@@ -8,8 +8,11 @@ for usr in ${user_list[*]}
 do
   # test sudo -l -U "$usr" 2>&1
   sudo_enabled=$(sudo -l -U "$usr" 2>&1) | grep '(ALL) NOPASSWD: ALL'; #test -z "$sudo_enabled" || echo $sudo_enabled | grep -q password
-  echo $?
+  # echo $?
   echo "$sudo_enabled"
-  # if [ $sudo_enabled -eq '']
+  if [ $sudo_enabled -eq 1]
+  then
+    echo "NOT!!!"
+  fi
   # sudo -n -l -U "$usr" 2>&1
 done
