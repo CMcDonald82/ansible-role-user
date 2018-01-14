@@ -9,10 +9,11 @@ do
   # test sudo -l -U "$usr" 2>&1
   sudo_enabled=$(sudo -l -U "$usr" 2>&1) | grep '(ALL) NOPASSWD: ALL'; #test -z "$sudo_enabled" || echo $sudo_enabled | grep -q password
   # echo $?
-  echo "$sudo_enabled"
-  if [ $sudo_enabled -eq 1]
+  
+  if [ $? -eq 1]
   then
     echo "NOT!!!"
   fi
+  echo "$sudo_enabled"
   # sudo -n -l -U "$usr" 2>&1
 done
