@@ -1,8 +1,8 @@
-# ansible-role-user
+# ansible-role-users
 
-[![Build Status](https://travis-ci.org/CMcDonald82/ansible-role-user.svg?branch=master)](https://travis-ci.org/CMcDonald82/ansible-role-user)
+[![Build Status](https://travis-ci.org/CMcDonald82/ansible-role-users.svg?branch=master)](https://travis-ci.org/CMcDonald82/ansible-role-users)
 
-Ansible role for creating a user on an Ubuntu server
+Ansible role for creating users on an Ubuntu server
 
 ## Requirements
 
