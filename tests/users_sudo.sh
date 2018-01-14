@@ -9,6 +9,6 @@ do
   # test sudo -l -U "$usr" 2>&1
   sudo_enabled=$(sudo -l -U "$usr" 2>&1); #test -z "$sudo_enabled" || echo $sudo_enabled | grep -q password
   echo "$sudo_enabled"
-  echo "$sudo_enabled" | grep (ALL) NOPASSWD: ALL
+  echo "$sudo_enabled" | grep '(ALL) NOPASSWD: ALL'
   # sudo -n -l -U "$usr" 2>&1
 done
