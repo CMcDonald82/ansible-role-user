@@ -13,7 +13,7 @@
     line: "{{ (enable_passwordless_sudo) | ternary('%sudo ALL=(ALL) NOPASSWD:ALL', '%sudo ALL=(ALL:ALL) ALL') }}" #"%sudo ALL=(ALL) NOPASSWD:ALL" 
     validate: "visudo -cf %s" 
 
-- name: Users | Create deploy users
+- name: Users | Create users
   user:
     name: "{{ item.username }}"
     password: "{{ item.password }}"
@@ -27,19 +27,19 @@
     # ssh_key_file: .ssh/id_rsa
     # maybe have default path to ssh_keys here
     state: present
-  with_items: "{{ system_users }}"
+  with_items: "{{ users }}"
   when: item.ssh_keys is defined
   # register: rootkeys
   # no_log: true
 
 # - debug: var=rootkeys
 
-- name: SSH Keys | Add authorized ssh key (public key) for deploy user
+- name: SSH Keys | Add authorized ssh key (public key) for users
   authorized_key:
     user: "{{ item.0.username }}"
     key: "{{ lookup('file', item.1) }}" #"{{ item.1 }}" 
   with_subelements:
-    - "{{ system_users }}"
+    - "{{ users }}"
     - ssh_keys | d([])
     - skip_missing: yes
   # no_log: true

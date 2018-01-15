@@ -13,14 +13,14 @@ None
 The following variables with their default values are listed below.
 
   ```
-  system_users: []
+  users: []
   ```
 
-  This is the list of users to be created. An example of the format of an entry in system_users:
+  This is the list of users to be created. An example of the format of an entry in users:
 
   ```
   ex.)
-    system_users:
+    users:
       - username: deploy
         password: password
         groups:
@@ -72,9 +72,9 @@ NOTE: This assumes the required vault_deploy_password variable has been set in a
 
   roles:
     - role: user_role
-      system_users:
+      users:
         - username: deploy
-          password: password
+          password: "{{ vault_deploy_password }}"
           groups:
             - sudo
           append: yes

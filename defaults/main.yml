@@ -1,7 +1,7 @@
 ---
 
 # List of users to add
-system_users: []
+users: []
 
 # List of users to remove
 users_removed: []

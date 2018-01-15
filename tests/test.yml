@@ -4,7 +4,7 @@
   remote_user: root
   become: yes
   vars:
-    system_users:
+    users:
       # This user should be created and have sudo access
       - username: deploy_test_1
         password: admin
