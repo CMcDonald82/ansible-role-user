@@ -1,6 +1,10 @@
 ---
 
+# List of users to add
 system_users: []
+
+# List of users to remove
+users_removed: []
 
 users_default_shell: /bin/bash
 
