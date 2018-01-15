@@ -21,7 +21,7 @@ The following variables with their default values are listed below.
   ```
   users:
     - username: deploy
-      password: password
+      password: "{{ vault_deploy_password }}"
       groups:
         - sudo
       append: yes
