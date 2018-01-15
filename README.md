@@ -42,6 +42,7 @@ The following variables with their default values are listed below.
   * update_password (can either be 'always' or 'on_create'): always will update passwords if they differ. on_create will only set the password for newly created users.
   * shell (default is /bin/bash): Optionally set the user's shell.
   * create_home (default = yes): Unless set to no, a home directory will be made for the user when the account is created or if the home directory does not exist.
+  * home: Optionally set the user's home directory.
 
 
   ```
