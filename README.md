@@ -61,7 +61,6 @@ The following variables with their default values are listed below.
   These are the available parameters for each user:
   * username (required): Name of the user to remove.
   * remove (default = no): When used with state=absent, behavior is as with userdel --remove. 
-  * force (default = no): When used with state=absent, behavior is as with userdel --force.
 
   ```
   users_default_shell: /bin/bash
@@ -105,7 +104,6 @@ NOTE: This assumes the required vault_deploy_password variable has been set in a
       users_removed:
         - username: old_deploy_user
           remove: yes
-          force: yes
       enable_passwordless_sudo: true
 ```
 
