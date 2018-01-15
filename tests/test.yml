@@ -26,11 +26,11 @@
         ssh_keys:
           - ./tests/files/id_rsa_test.pub
 
-      # This user will be created then deleted
-      - username: deploy_user_4
-        password: admin
-        ssh_keys:
-          - ./tests/files/id_rsa_test.pub
+      # # This user will be created then deleted
+      # - username: deploy_user_4
+      #   password: admin
+      #   ssh_keys:
+      #     - ./tests/files/id_rsa_test.pub
 
     # users_removed:
     #   - username: deploy_test_1
@@ -46,25 +46,26 @@
   roles:
     - role_under_test
 
-# - hosts: localhost #all
-#   remote_user: root
-#   become: yes
-#   vars:
-#     system_users:
-#       # This user will be created then deleted
-#       - username: deploy_user_4
-#         password: admin
-#         ssh_keys:
-#           - ./tests/files/id_rsa_test.pub
+- hosts: localhost #all
+  remote_user: root
+  become: yes
+  run_once: true
+  vars:
+    system_users:
+      # This user will be created then deleted
+      - username: deploy_user_4
+        password: admin
+        ssh_keys:
+          - ./tests/files/id_rsa_test.pub
 
-#     users_removed:
-#       - username: deploy_test_1
-#       - username: deploy_test_3
-#       - username: deploy_user_4
-#         remove: yes
-#         force: yes
+    users_removed:
+      - username: deploy_test_1
+      - username: deploy_test_3
+      - username: deploy_user_4
+        remove: yes
+        force: yes
 
-#   roles:
-#     - role_under_test
+  roles:
+    - role_under_test
 
 
