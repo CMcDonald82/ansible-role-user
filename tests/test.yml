@@ -34,7 +34,11 @@
 
     users_removed:
       - username: deploy_test_1
+        remove: yes
+        force: yes
       - username: deploy_test_3
+        remove: yes
+        force: yes
       - username: deploy_user_4
         remove: yes
         force: yes
