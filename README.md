@@ -35,7 +35,7 @@ The following variables with their default values are listed below.
   ```
 
   These are the available parameters for each user:
-  * username (required): Name of the user to create, remove or modify.
+  * username (required): Name of the user to create or modify.
   * password: Always generate a crypted password for this value. It is a good idea to store this password in an encrypted file. See [this playbook](https://github.com/CMcDonald82/ansible-playbook-ubuntu-phoenix) for an example of how to do this.
   * groups: Any groups you want the user to be added to. For example, you can add the user to the sudo group to give them sudo privileges.
   * append (default = no): yes will only add groups, not set them to just the list in groups. 
@@ -44,6 +44,24 @@ The following variables with their default values are listed below.
   * shell (default is /bin/bash): Optionally set the user's shell.
   * create_home (default = yes): Unless set to no, a home directory will be made for the user when the account is created or if the home directory does not exist.
 
+  ```
+  users_removed: []
+  ```
+
+  This is a list of the users to be removed from the system. An example of the format of an entry in users_removed:
+
+  ```
+  ex.)
+    users_removed:
+      - username: deploy
+        remove: yes
+        force: yes
+  ```
+
+  These are the available parameters for each user:
+  * username (required): Name of the user to remove.
+  * remove (default = no): When used with state=absent, behavior is as with userdel --remove. 
+  * force (default = no): When used with state=absent, behavior is as with userdel --force.
 
   ```
   users_default_shell: /bin/bash
@@ -84,6 +102,10 @@ NOTE: This assumes the required vault_deploy_password variable has been set in a
           shell: /bin/bash
           create_home: true
           home: /home/deploy 
+      users_removed:
+        - username: old_deploy_user
+          remove: yes
+          force: yes
       enable_passwordless_sudo: true
 ```
 
