@@ -1,9 +1,9 @@
 ---
 
-- name: Users | Remove users
-  user:
-    name: "{{ item.username }}"
-    state: absent
-    remove: "{{ item.remove | d(omit) }}"
-    force: "{{ item.force | d(omit) }}"
-  with_items: "{{ users_removed }}"
+# - name: Users | Remove users
+#   user:
+#     name: "{{ item.username }}"
+#     state: absent
+#     remove: "{{ item.remove | d(omit) }}"
+#     force: "{{ item.force | d(omit) }}"
+#   with_items: "{{ users_removed }}"
