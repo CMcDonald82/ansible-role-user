@@ -55,7 +55,6 @@ The following variables with their default values are listed below.
     users_removed:
       - username: deploy
         remove: yes
-        force: yes
   ```
 
   These are the available parameters for each user:
