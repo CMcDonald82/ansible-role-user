@@ -6,3 +6,4 @@
     state: absent
     remove: "{{ item.remove | d(omit) }}"
   with_items: "{{ users_removed }}"
+  no_log: true
