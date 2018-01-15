@@ -32,10 +32,10 @@
         ssh_keys:
           - ./tests/files/id_rsa_test.pub
 
-    users_removed:
-      - username: deploy_user_4
-        remove: yes
-        force: yes
+    # users_removed:
+    #   - username: deploy_user_4
+    #     remove: yes
+    #     force: yes
 
   roles:
     - role_under_test
