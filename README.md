@@ -80,7 +80,7 @@ The following variables with their default values are listed below.
 
 
 ## Example Playbook
-NOTE: This assumes the required vault_deploy_password variable has been set in a file within group_vars/all wherever this playbook is being run
+NOTE: This assumes the required vault_deploy_password variable has been set in a file somewhere within the playbook (for example, a file located in group_vars/all)
 
 ```
 - name: Setup Ubuntu server with PostgreSQL, Nginx, SSL, UFW for use with Phoenix app
