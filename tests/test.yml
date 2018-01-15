@@ -52,6 +52,8 @@
           - ./tests/files/id_rsa_test.pub
 
     users_removed:
+      - username: deploy_test_1
+      - username: deploy_test_3
       - username: deploy_user_4
         remove: yes
         force: yes
