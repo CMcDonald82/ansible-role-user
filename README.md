@@ -19,19 +19,18 @@ The following variables with their default values are listed below.
   This is the list of users to be created. An example of the format of an entry in users:
 
   ```
-  ex.)
-    users:
-      - username: deploy
-        password: password
-        groups:
-          - sudo
-        append: yes
-        ssh_keys:
-          - /path/to/key1
-        update_password: always
-        shell: /bin/bash
-        create_home: true
-        home: /home/deploy 
+  users:
+    - username: deploy
+      password: password
+      groups:
+        - sudo
+      append: yes
+      ssh_keys:
+        - /path/to/key1
+      update_password: always
+      shell: /bin/bash
+      create_home: true
+      home: /home/deploy 
   ```
 
   These are the available parameters for each user:
@@ -44,6 +43,7 @@ The following variables with their default values are listed below.
   * shell (default is /bin/bash): Optionally set the user's shell.
   * create_home (default = yes): Unless set to no, a home directory will be made for the user when the account is created or if the home directory does not exist.
 
+
   ```
   users_removed: []
   ```
@@ -51,22 +51,22 @@ The following variables with their default values are listed below.
   This is a list of the users to be removed from the system. An example of the format of an entry in users_removed:
 
   ```
-  ex.)
-    users_removed:
-      - username: deploy
-        remove: yes
-        force: yes
+  users_removed:
+    - username: deploy
+      remove: yes
   ```
 
   These are the available parameters for each user:
   * username (required): Name of the user to remove.
   * remove (default = no): When used with state=absent, behavior is as with userdel --remove. 
 
+
   ```
   users_default_shell: /bin/bash
   ```
 
   Sets the default shell for users. Defaults to /bin/bash
+
 
   ```
   enable_passwordless_sudo: true
