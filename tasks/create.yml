@@ -26,7 +26,7 @@
     state: present
   with_items: "{{ users }}"
   when: item.ssh_keys is defined
-  no_log: true
+  # no_log: true
 
 - name: SSH Keys | Add authorized ssh key (public key) for users
   authorized_key:
@@ -36,6 +36,6 @@
     - "{{ users }}"
     - ssh_keys | d([])
     - skip_missing: yes
-  no_log: true
+  # no_log: true
 
 
