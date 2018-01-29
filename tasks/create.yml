@@ -28,13 +28,14 @@
   when: item.ssh_keys is defined
   # no_log: true
 
+# NOTE - this is not working correctly, need to find out what's wrong and fix
 - name: SSH Keys | Add authorized ssh key (public key) for users
   authorized_key:
     user: "{{ item.0.username }}"
     key: "{{ lookup('file', item.1) }}" 
   with_subelements:
     - "{{ users }}"
-    - ssh_keys | d([])
+    - ssh_keys #| d([])
     - skip_missing: yes
   # no_log: true
 
