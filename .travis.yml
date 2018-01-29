@@ -21,7 +21,6 @@ script:
   - chmod +x ${PWD}/tests/test.sh
   - chmod +x ${PWD}/tests/users_exist.sh
   - chmod +x ${PWD}/tests/users_sudo.sh
-  - chmod +x ${PWD}/tests/ssh_keys_exist.sh
 
   # Run tests
   - ${PWD}/tests/test.sh
@@ -31,6 +30,3 @@ script:
 
   # Check users' sudo privileges
   - docker exec --tty ${container_id} env TERM=xterm /bin/bash /etc/ansible/roles/role_under_test/tests/users_sudo.sh
-
-  # Check ssh access
-  - docker exec --tty ${container_id} env TERM=xterm /bin/bash /etc/ansible/roles/role_under_test/tests/ssh_keys_exist.sh
