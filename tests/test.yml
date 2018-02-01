@@ -31,7 +31,7 @@
       - username: deploy_test_4
         remove: yes
 
-  post_tasks:
+  tasks:
     - name: Read the passwd file
       shell: cat /etc/passwd
       register: test_user_accounts
