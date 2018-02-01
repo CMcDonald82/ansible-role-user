@@ -43,6 +43,11 @@
         msg: "User {{ item.username }} exists"
       with_items: "{{ users }}"
 
+    - name: Log whether users_removed do not exist
+      when: test_user_accounts.stdout.find(item.username) == -1
+      debug:
+        msg: "User {{ item.username }} does not exist"
+      with_items: "{{ users_removed }}"
 
   roles:
     - role_under_test
