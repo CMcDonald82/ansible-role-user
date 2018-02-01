@@ -3,6 +3,7 @@
 - hosts: localhost #all
   remote_user: root
   become: yes
+  gather_facts: no
   vars:
     users:
       # This user should be created and have sudo access
@@ -29,6 +30,14 @@
     users_removed:
       - username: deploy_test_4
         remove: yes
+
+  post_tasks:
+    - name: Test users
+      local_action: "command ssh -q -o BatchMode=yes -o ConnectTimeout=3 {{ inventory_hostname }} 'echo ok'"
+      ignore_errors: true
+      changed_when: false
+      register: test_users
+
 
   roles:
     - role_under_test
