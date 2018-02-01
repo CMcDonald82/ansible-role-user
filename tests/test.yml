@@ -34,6 +34,7 @@
   tasks:
     - name: Read the passwd file
       shell: cat /etc/passwd
+      changed_when: false
       register: test_user_accounts
 
     - name: Log whether users exist
