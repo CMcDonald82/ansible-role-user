@@ -38,8 +38,8 @@
 
     - name: Log whether users exist
       when: test_user_accounts.stdout.find(item.username) != -1
-      debug:
-        msg: "User {{ item.username }} exists"
+      # debug:
+      #   msg: "User {{ item.username }} exists"
       with_items: "{{ users }}"
 
 
