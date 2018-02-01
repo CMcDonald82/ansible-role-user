@@ -32,11 +32,15 @@
         remove: yes
 
   post_tasks:
-    - name: Test users
-      local_action: "command ssh -q -o BatchMode=yes -o ConnectTimeout=3 {{ inventory_hostname }} 'echo ok'"
-      ignore_errors: true
-      changed_when: false
-      register: test_users
+    - name: Read the passwd file
+      shell: cat /etc/passwd
+      register: test_user_accounts
+
+    - name: Log whether users exist
+      when: test_user_accounts.stdout.find(item.username) != -1
+      debug:
+        msg: "User {{ item.username }} exists"
+      with_items: "{{ users }}"
 
 
   roles:
