@@ -1,5 +1,11 @@
 ---
 
-- include_tasks: create.yml
+- import_tasks: create.yml
+  tags:
+    - users
+    - users_create
 
-- include_tasks: remove.yml
+- import_tasks: remove.yml
+  tags:
+    - users
+    - users_remove
